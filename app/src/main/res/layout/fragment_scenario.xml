@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScenarioFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="40dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non ligula nulla. Curabitur imperdiet urna venenatis, mollis leo vel, ultrices ante. Duis vel nibh tristique, facilisis sapien sed, maximus mauris. Praesent non augue nec eros ultricies molestie. Donec feugiat, lectus non ornare tincidunt, tellus eros posuere tellus, id imperdiet enim risus a lorem. Donec libero dolor, aliquet in euismod sed, porttitor eu felis. Suspendisse vitae lacinia augue. Aliquam scelerisque purus quis leo egestas venenatis. Pellentesque cursus ac augue vel auctor. Mauris vulputate efficitur condimentum. Cras ornare congue eros, quis volutpat ante auctor non. Quisque consequat luctus nunc. Cras facilisis, ligula sed sodales volutpat, nisl lorem euismod turpis, at auctor neque metus eget turpis. Phasellus lectus quam, interdum at mattis et, gravida vitae lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. " />
+
+</FrameLayout>
