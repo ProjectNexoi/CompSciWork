@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SelectionActivity.class));
             }
         });
-        /*
+
         Button game = findViewById(R.id.TempGameAccess);
         game.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, GameActivity.class));
             }
         });
-        */
+
     }
 
     @Override

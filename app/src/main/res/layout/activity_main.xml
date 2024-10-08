@@ -44,12 +44,21 @@
         android:paddingTop="50dp"
         android:textSize="15sp"
         android:text="Welcome, USERNAMEHERE" />
-    <!--
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:paddingTop="50dp"
+        android:textSize="15sp"
+        android:text="TEMP BUTTON FOR DEMONSTRATION PURPOSES. WILL NOT BE IN FINAL RELEASE" />
     <Button
         android:id="@+id/TempGameAccess"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="gaming" />
-    -->
+
 </LinearLayout>
