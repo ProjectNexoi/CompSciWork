@@ -15,9 +15,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="40sp"
-        android:paddingBottom="50dp"
+        android:paddingBottom="10dp"
         android:paddingTop="30dp"
         android:text="Log In" />
+
+    <TextView
+        android:id="@+id/ErrorReturn"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ff0000"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        android:text="placeholder :)" />
 
     <TextView
         android:id="@+id/LIUsernameTitle"
