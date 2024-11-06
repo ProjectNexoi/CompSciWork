@@ -2,6 +2,7 @@ package com.example.compsciwork;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,8 +52,13 @@ public class SignUpActivity extends AppCompatActivity {
                     errorReturn.setText("Provided Email is not valid.");
                     errorReturn.setVisibility(View.VISIBLE);
                 } else {
-                    Toast toast = Toast.makeText(SignUpActivity.this,"All inputs validated.",Toast.LENGTH_SHORT);
-                    toast.show();
+                    //Toast toast = Toast.makeText(SignUpActivity.this,"All inputs validated.",Toast.LENGTH_SHORT);
+                    //toast.show();
+
+                    User user = new User(username.getText().toString(),email.getText().toString(),password.getText().toString());
+                    DatabaseManager dbm = new DatabaseManager();
+                    dbm.MakeUser(SignUpActivity.this, user);
+                    startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                 }
             }
         });
