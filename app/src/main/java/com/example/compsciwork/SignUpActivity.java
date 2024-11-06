@@ -56,8 +56,8 @@ public class SignUpActivity extends AppCompatActivity {
                     //toast.show();
 
                     User user = new User(username.getText().toString(),email.getText().toString(),password.getText().toString());
-                    DatabaseManager dbm = new DatabaseManager();
-                    dbm.MakeUser(SignUpActivity.this, user);
+                    DatabaseManager dbm = new DatabaseManager(SignUpActivity.this);
+                    dbm.makeUser(user);
                     startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                 }
             }
