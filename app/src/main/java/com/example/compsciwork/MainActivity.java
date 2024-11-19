@@ -27,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        DatabaseManager dbm = new DatabaseManager(MainActivity.this);
+
+        if(dbm.isLoggedIn()){
+            startActivity(new Intent(MainActivity.this, SelectionActivity.class));
+        }
+
         Button login = findViewById(R.id.LogInBtn);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, LogInActivity.class));
             }
         });
-
+        /*
         Button begin = findViewById(R.id.StartBtn);
         begin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SelectionActivity.class));
             }
         });
-
+        */
+        /*
         Button game = findViewById(R.id.TempGameAccess);
         game.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, GameActivity.class));
             }
         });
-
+        */
     }
 
     @Override
@@ -60,37 +67,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        int itemID= item.getItemId();
-        if (itemID==R.id.nav_home)
-            openHome();
-        if (itemID==R.id.nav_settings)
-            openSettings();
-        if(itemID==R.id.nav_selection)
-            openSelection();
-        if(itemID==R.id.nav_logout)
-            logOut();
+        NavController nc = new NavController(this);
+        nc.NavAction(item);
         return super.onOptionsItemSelected(item);
     }
 
-    private void openHome() {
-        Intent i;
-        i=new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
 
-    private void openSettings() {
-        Intent i;
-        i=new Intent(this, SettingActivity.class);
-        startActivity(i);
-    }
-
-    private void openSelection() {
-        Intent i;
-        i=new Intent(this, SelectionActivity.class);
-        startActivity(i);
-    }
-
-    private void logOut() {
-
-    }
 }

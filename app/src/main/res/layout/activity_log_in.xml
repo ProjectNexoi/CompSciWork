@@ -32,20 +32,20 @@
         android:text="placeholder :)" />
 
     <TextView
-        android:id="@+id/LIUsernameTitle"
+        android:id="@+id/LIEmailTitle"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingBottom="2dp"
-        android:text="Username" />
+        android:text="Email" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/LIUsernameField"
+            android:id="@+id/LIEmailField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="" />

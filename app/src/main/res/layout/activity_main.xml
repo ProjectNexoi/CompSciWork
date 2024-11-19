@@ -21,6 +21,7 @@
         android:textAlignment="center"
         android:text="The NeverEnding Story" />
 
+    <!--
     <Button
         android:id="@+id/StartBtn"
         android:layout_width="250dp"
@@ -28,6 +29,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:text="Begin" />
+    -->
 
     <Button
         android:id="@+id/LogInBtn"
@@ -35,16 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Log In" />
-
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingTop="50dp"
-        android:textSize="15sp"
-        android:text="Welcome, USERNAMEHERE" />
-
+    <!--
     <TextView
         android:id="@+id/temp"
         android:layout_width="wrap_content"
@@ -60,5 +53,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="gaming" />
-
+    -->
 </LinearLayout>

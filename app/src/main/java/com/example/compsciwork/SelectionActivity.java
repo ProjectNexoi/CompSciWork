@@ -54,37 +54,8 @@ public class SelectionActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        int itemID= item.getItemId();
-        if (itemID==R.id.nav_home)
-            openHome();
-        if (itemID==R.id.nav_settings)
-            openSettings();
-        if(itemID==R.id.nav_selection)
-            openSelection();
-        if(itemID==R.id.nav_logout)
-            logOut();
+        NavController nc = new NavController(this);
+        nc.NavAction(item);
         return super.onOptionsItemSelected(item);
-    }
-
-    private void openHome() {
-        Intent i;
-        i=new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
-
-    private void openSettings() {
-        Intent i;
-        i=new Intent(this, SettingActivity.class);
-        startActivity(i);
-    }
-
-    private void openSelection() {
-        Intent i;
-        i=new Intent(this, SelectionActivity.class);
-        startActivity(i);
-    }
-
-    private void logOut() {
-
     }
 }

@@ -1,6 +1,9 @@
 package com.example.compsciwork;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,8 +18,8 @@ public class DatabaseManager {
     private Context context;
 
     private FirebaseAuth mAuth;
-    DatabaseManager(Context c){
-        this.context = c;
+    DatabaseManager(Context context){
+        this.context = context;
         this.mAuth = FirebaseAuth.getInstance();
     }
 
@@ -34,15 +37,21 @@ public class DatabaseManager {
         return mAuth;
     }
 
+    public Boolean isLoggedIn() {
+        return getMAuth().getCurrentUser() != null;
+    }
+
     public void setMAuth(FirebaseAuth mAuth) {
         this.mAuth = mAuth;
     }
     public void makeUser(User user){
+        mAuth.signOut();
         this.mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(context.getApplicationContext(),"User Creation Successful.",Toast.LENGTH_SHORT).show();
+                    startActivity(context, new Intent(context, MainActivity.class), null);
                 }
                 else{
                     Toast.makeText(context.getApplicationContext(),"User Creation Failed: " + task.getException().getMessage(),Toast.LENGTH_LONG).show();
@@ -57,12 +66,17 @@ public class DatabaseManager {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(context.getApplicationContext(),"Log In Successful.",Toast.LENGTH_SHORT).show();
+                    startActivity(context, new Intent(context, MainActivity.class), null);
                 }
                 else{
                     Toast.makeText(context.getApplicationContext(),"Log In Failed: " + task.getException().getMessage(),Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    public void logOut() {
+        this.mAuth.signOut();
     }
 
 

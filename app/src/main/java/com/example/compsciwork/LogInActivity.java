@@ -32,23 +32,23 @@ public class LogInActivity extends AppCompatActivity {
 
         InfoValidator validator = new InfoValidator();
         TextView errorReturn = findViewById(R.id.ErrorReturn);
-        TextInputEditText username = findViewById(R.id.LIUsernameField);
+        TextInputEditText email = findViewById(R.id.LIEmailField);
         TextInputEditText password = findViewById(R.id.LIPasswordField);
-
+        DatabaseManager dbm = new DatabaseManager(this);
         Button login = findViewById(R.id.LIButton);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 errorReturn.setVisibility(View.GONE);
-                if(!validator.CheckUsername(username.getText().toString())){
+                if(!validator.CheckUsername(email.getText().toString())){
                     errorReturn.setText("Username length must be greater or equal to five.");
                     errorReturn.setVisibility(View.VISIBLE);
                 } else if(!validator.CheckPassword(password.getText().toString())){
                     errorReturn.setText("Password length must be greater or equal to eight.");
                     errorReturn.setVisibility(View.VISIBLE);
                 } else {
-                    Toast toast = Toast.makeText(LogInActivity.this,"All inputs validated.",Toast.LENGTH_SHORT);
-                    toast.show();
+                    User user = new User("",email.getText().toString(),password.getText().toString());
+                    dbm.logIn(user);
                 }
             }
         });
@@ -74,37 +74,8 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        int itemID= item.getItemId();
-        if (itemID==R.id.nav_home)
-            openHome();
-        if (itemID==R.id.nav_settings)
-            openSettings();
-        if(itemID==R.id.nav_selection)
-            openSelection();
-        if(itemID==R.id.nav_logout)
-            logOut();
+        NavController nc = new NavController(this);
+        nc.NavAction(item);
         return super.onOptionsItemSelected(item);
-    }
-
-    private void openHome() {
-        Intent i;
-        i=new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
-
-    private void openSettings() {
-        Intent i;
-        i=new Intent(this, SettingActivity.class);
-        startActivity(i);
-    }
-
-    private void openSelection() {
-        Intent i;
-        i=new Intent(this, SelectionActivity.class);
-        startActivity(i);
-    }
-
-    private void logOut() {
-
     }
 }
