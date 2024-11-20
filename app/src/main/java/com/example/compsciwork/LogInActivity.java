@@ -47,8 +47,7 @@ public class LogInActivity extends AppCompatActivity {
                     errorReturn.setText("Password length must be greater or equal to eight.");
                     errorReturn.setVisibility(View.VISIBLE);
                 } else {
-                    User user = new User("",email.getText().toString(),password.getText().toString());
-                    dbm.logIn(user);
+                    dbm.logIn(email.getText().toString(), password.getText().toString());
                 }
             }
         });

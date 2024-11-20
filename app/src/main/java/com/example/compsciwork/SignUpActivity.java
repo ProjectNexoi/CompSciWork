@@ -52,12 +52,10 @@ public class SignUpActivity extends AppCompatActivity {
                     errorReturn.setText("Provided Email is not valid.");
                     errorReturn.setVisibility(View.VISIBLE);
                 } else {
-                    //Toast toast = Toast.makeText(SignUpActivity.this,"All inputs validated.",Toast.LENGTH_SHORT);
-                    //toast.show();
-
-                    User user = new User(username.getText().toString(),email.getText().toString(),password.getText().toString());
+                    //Toast toast = Toast.makeText(SignUpActivity.this,"All inputs validated.",Toast.LENGTH_SHORT).show();
+                    User user = new User(username.getText().toString(),email.getText().toString());
                     DatabaseManager dbm = new DatabaseManager(SignUpActivity.this);
-                    dbm.makeUser(user);
+                    dbm.makeUser(email.getText().toString(),password.getText().toString(), user);
                 }
             }
         });

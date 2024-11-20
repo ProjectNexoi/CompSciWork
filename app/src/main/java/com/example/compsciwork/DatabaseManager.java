@@ -10,17 +10,25 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DatabaseManager {
 
     private Context context;
 
-    private FirebaseAuth mAuth;
+    private static FirebaseAuth mAuth;
+    private static FirebaseDatabase database;
+    private static DatabaseReference reference;
+    //getMyRef("users").child(task.getResult().getUser().getUid()).setValue(user);
+
+
     DatabaseManager(Context context){
         this.context = context;
-        this.mAuth = FirebaseAuth.getInstance();
+        this.setMAuth(FirebaseAuth.getInstance());
     }
 
     public Context getContext() {
@@ -36,21 +44,38 @@ public class DatabaseManager {
         }
         return mAuth;
     }
+    public static FirebaseDatabase getDatabase() {
+        if(database == null) {
+            database = FirebaseDatabase.getInstance("https://compsciwork-2024-default-rtdb.europe-west1.firebasedatabase.app");
+        }
+        return database;
+    }
+
+    public static DatabaseReference getReference(String ref) {
+        reference = getDatabase().getReference(ref);
+        return reference;
+    }
+
+    public static void setDatabase(FirebaseDatabase database) {
+        DatabaseManager.database = database;
+    }
 
     public Boolean isLoggedIn() {
         return getMAuth().getCurrentUser() != null;
     }
 
-    public void setMAuth(FirebaseAuth mAuth) {
-        this.mAuth = mAuth;
+    public void setMAuth(FirebaseAuth m) {
+        mAuth = m;
     }
-    public void makeUser(User user){
+    public void makeUser(String email, String password, User user){
         mAuth.signOut();
-        this.mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        this.getMAuth().createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(context.getApplicationContext(),"User Creation Successful.",Toast.LENGTH_SHORT).show();
+                    user.setUId(task.getResult().getUser().getUid());
+                    getReference("users").child(user.getUId()).setValue(user);
                     startActivity(context, new Intent(context, MainActivity.class), null);
                 }
                 else{
@@ -60,8 +85,8 @@ public class DatabaseManager {
         });
     }
 
-    public void logIn(User user){
-        this.mAuth.signInWithEmailAndPassword(user.getEmail(), user.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    public void logIn(String email, String password){
+        this.getMAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
@@ -76,7 +101,7 @@ public class DatabaseManager {
     }
 
     public void logOut() {
-        this.mAuth.signOut();
+        this.getMAuth().signOut();
     }
 
 

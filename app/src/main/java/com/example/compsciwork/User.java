@@ -5,14 +5,22 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private String email;
-    private String password;
+
+    public String getUId() {
+        return uId;
+    }
+
+    public void setUId(String uId) {
+        this.uId = uId;
+    }
+
+    private String uId;
 
     private ArrayList<SaveFile> saveFiles;
 
-    public User(String username, String email, String password) {
+    public User(String username, String email) {
         this.username = username;
         this.email = email;
-        this.password = password;
     }
 
     public ArrayList<SaveFile> getSaveFiles() {
@@ -37,14 +45,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void AddSaveFile(SaveFile s){

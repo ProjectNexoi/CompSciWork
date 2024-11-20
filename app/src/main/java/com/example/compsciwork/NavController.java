@@ -10,9 +10,20 @@ import android.widget.Toast;
 public class NavController {
 
     private Context context;
-    private DatabaseManager dbm = new DatabaseManager(context);
+    private DatabaseManager dbm;
+
     public NavController(Context context) {
         this.context = context;
+        dbm = new DatabaseManager(this.context);
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+        dbm = new DatabaseManager(this.context);
     }
 
     public void NavAction(MenuItem item) {
