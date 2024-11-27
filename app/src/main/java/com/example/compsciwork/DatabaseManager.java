@@ -23,8 +23,6 @@ public class DatabaseManager {
     private static FirebaseAuth mAuth;
     private static FirebaseDatabase database;
     private static DatabaseReference reference;
-    //getMyRef("users").child(task.getResult().getUser().getUid()).setValue(user);
-
 
     DatabaseManager(Context context){
         this.context = context;
